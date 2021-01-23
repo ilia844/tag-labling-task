@@ -4,15 +4,9 @@
   padding: 0;
 }
 
-#root {
-  width: 100%;
-  height: 100vh;
-  background-color: blue;
-}
-
 .app-container {
   width: 100%;
-  height: 100%;
+  height: 100vh;
 
   display: flex;
   flex-direction: column;
@@ -81,11 +75,9 @@
 
   .left-menu {
     flex-grow: 1;
-
     width: 100%;
     height: auto;
-    //min-height: 200px;
-    //height: 30%;
+    margin-right: 0;
   }
 
   .image-area {
