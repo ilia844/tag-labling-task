@@ -1,8 +1,11 @@
 import React from 'react';
 
 import './App.scss';
-import Header from '../Header/Header';
 import porshe from '../../img/Porshe.jpeg';
+import Header from '../Header/Header';
+import InteractiveImage from '../InteractiveImage/InteractiveImage';
+
+
 
 class App extends React.Component {
     constructor(props) {
@@ -36,12 +39,14 @@ class App extends React.Component {
 
                             </div>
 
-                            {/*InteractiveImage*/}
-                            <div className="image-area">
-                                <img
-                                    src={this.state.image ? this.state.image.preview : porshe}
-                                    alt="Porshe"/>
-                            </div>
+                            <InteractiveImage
+                                image={this.state.image ? this.state.image.preview : porshe}
+                            />
+                            {/*<div className="image-area">*/}
+                            {/*    <img*/}
+                            {/*        src={this.state.image ? this.state.image.preview : porshe}*/}
+                            {/*        alt="Porshe"/>*/}
+                            {/*</div>*/}
 
                         </div>
                     </div>
