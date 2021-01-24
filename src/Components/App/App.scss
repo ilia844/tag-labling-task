@@ -55,7 +55,11 @@
 }
 
 .image-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   flex-grow: 1;
+
   //height: 500px;
 
   border-radius: 10px;
@@ -64,6 +68,8 @@
   img {
     width: 100%;
     height: auto;
+
+    border-radius: 10px;
   }
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './Header.scss';
+import UploadArea from '../UploadArea/UploadArea';
 
 
 class Header extends React.Component {
@@ -10,9 +11,9 @@ class Header extends React.Component {
                 <div className="wrapper">
                     <div className="header-container">
 
-                        <div className="upload-area">
-                            Drag & Drop
-                        </div>
+                        <UploadArea
+                            loadNewImage={this.props.loadNewImage}
+                        />
 
                         <div className="header-menu">
                             <input type="search"/>
