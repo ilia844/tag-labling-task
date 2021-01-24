@@ -11,7 +11,7 @@ class InteractiveImage extends React.Component {
                     alt="Porshe"
                 />
             </div>
-        )
+        );
     }
 }
 

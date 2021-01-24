@@ -5,8 +5,9 @@
 
 
 ## 2021-01-24
-- Move image functionality and stiles to separate component (0.3h)
-- Improve image responsive (0.5h)
+- Create LeftMenu component and move its styles (15m)
+- Move image functionality and stiles to separate component (20m)
+- Improve image responsive (30m)
 - Create Drag And Drop component 
 and throwing an image into state in App (3h)
 

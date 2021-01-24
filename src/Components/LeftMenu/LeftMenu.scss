@@ -1,0 +1,19 @@
+.left-menu {
+  width: 300px;
+  height: 100%;
+  flex-shrink: 0;
+
+  margin-right: 10px;
+
+  border-radius: 10px;
+  border: 3px dashed cadetblue;
+}
+
+@media (max-width: 768px) {
+  .left-menu {
+    flex-grow: 1;
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+  }
+}

@@ -3,6 +3,7 @@ import React from 'react';
 import './App.scss';
 import porshe from '../../img/Porshe.jpeg';
 import Header from '../Header/Header';
+import LeftMenu from '../LeftMenu/LeftMenu';
 import InteractiveImage from '../InteractiveImage/InteractiveImage';
 
 
@@ -34,19 +35,11 @@ class App extends React.Component {
                     <div className="wrapper">
                         <div className="work-area">
 
-                            {/*LeftMenu*/}
-                            <div className="left-menu">
-
-                            </div>
+                            <LeftMenu />
 
                             <InteractiveImage
                                 image={this.state.image ? this.state.image.preview : porshe}
                             />
-                            {/*<div className="image-area">*/}
-                            {/*    <img*/}
-                            {/*        src={this.state.image ? this.state.image.preview : porshe}*/}
-                            {/*        alt="Porshe"/>*/}
-                            {/*</div>*/}
 
                         </div>
                     </div>
