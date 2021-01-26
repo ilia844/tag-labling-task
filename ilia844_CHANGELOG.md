@@ -1,8 +1,8 @@
 #Changelog
 <https://github.com/ilia844>
 
-## 2021-01-25
-
+## 2021-01-27
+- Add markers attachment to an image with state (5h) 
 
 ## 2021-01-24
 - Create LeftMenu component and move its styles (15m)

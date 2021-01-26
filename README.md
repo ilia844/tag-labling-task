@@ -3,3 +3,4 @@
 
 ## List of functions
 - Drag and Drop upload of an image
+- Tap/Click on image to put a tag
