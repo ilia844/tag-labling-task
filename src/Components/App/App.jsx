@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './App.scss';
-import porshe from '../../img/Porshe.jpeg';
+import porsheImg from '../../img/Porshe.jpeg';
 import Header from '../Header/Header';
 import LeftMenu from '../LeftMenu/LeftMenu';
 import InteractiveImage from '../InteractiveImage/InteractiveImage';
@@ -14,13 +14,40 @@ class App extends React.Component {
         this.state = {
             image: null,
             notesList: [],
+            isResized: false,
         }
     }
 
     loadNewImage = (img) => {
         this.setState({
             image: img,
+            notesList: [],
         })
+    }
+
+    setResizeFlag = (isResized = true) => {
+        this.setState({
+            isResized
+        })
+    }
+
+    addNewTag = (relativeX, relativeY) => {
+        const notes = this.state.notesList.slice();
+        notes.map((note) => note.active = false);
+
+        const newNote = {
+            point: {
+                x: relativeX,
+                y: relativeY,
+            },
+            note: '',
+            active: true,
+        }
+        notes.push(newNote);
+
+        this.setState({
+           notesList: notes,
+        });
     }
 
     render() {
@@ -38,7 +65,10 @@ class App extends React.Component {
                             <LeftMenu />
 
                             <InteractiveImage
-                                image={this.state.image ? this.state.image.preview : porshe}
+                                image={this.state.image ? this.state.image.preview : porsheImg}
+                                notesList={this.state.notesList}
+                                setResizeFlag={this.setResizeFlag}
+                                addNewTag={this.addNewTag}
                             />
 
                         </div>
