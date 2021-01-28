@@ -8,6 +8,11 @@ class InteractiveImage extends React.Component {
     constructor(props) {
         super(props);
         this.imageRef = React.createRef();
+        this.state = {
+            modal: {
+                isOpen: false,
+            }
+        }
     }
 
     handleClick = (e) => {
@@ -20,6 +25,11 @@ class InteractiveImage extends React.Component {
         const relativeY = imageHeight / top;
 
         this.props.addNewTag(relativeX, relativeY);
+        this.setState({
+            modal: {
+                isOpen: true,
+            }
+        })
     }
 
     renderTags = (notes) => {
@@ -50,7 +60,7 @@ class InteractiveImage extends React.Component {
                     alt="Porshe"
                 />
                 {this.renderTags(this.props.notesList)}
-                <Modal title="Enter your note below"></Modal>
+                <Modal title="Enter your note below" isOpen={this.state.modal.isOpen}></Modal>
             </div>
         );
     }

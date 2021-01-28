@@ -89,6 +89,13 @@
       margin: 5px;
 
       border-radius: 5px;
+      color: white;
+      background-color: cadetblue;
+
+      &.invert {
+        color: black;
+        background-color: white;
+      }
     }
   }
 }

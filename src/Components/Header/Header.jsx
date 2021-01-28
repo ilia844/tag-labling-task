@@ -2,6 +2,7 @@ import React from 'react';
 
 import './Header.scss';
 import UploadArea from '../UploadArea/UploadArea';
+import Button from '../Button/Button';
 
 
 class Header extends React.Component {
@@ -18,9 +19,9 @@ class Header extends React.Component {
                         <div className="header-menu">
                             <input type="search"/>
 
-                            <button className="login-btn">
+                            <Button className="login-btn" onClick={()=>{console.log('Login')}}>
                                 Log In
-                            </button>
+                            </Button>
                         </div>
 
                     </div>

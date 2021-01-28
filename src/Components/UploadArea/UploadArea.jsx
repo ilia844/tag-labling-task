@@ -18,12 +18,6 @@ function UploadArea(props) {
         onDrop: onDrop,
     });
 
-    // const images = files.map((file) => (
-    //    <div key={file.name}>
-    //        <img src={file.preview} style={{ width: "200px" }} alt="preview" />
-    //    </div>
-    // ));
-
     return (
         <div {...getRootProps()} className="upload-area">
             <input {...getInputProps()}/>

@@ -5,13 +5,14 @@ import classNames from 'classnames';
 import './Button.scss';
 
 const Button = ({
-    children, onClick, className, disabled, active
+    children, onClick, className, disabled, active, invert
 }) => {
 
     const classes = classNames(
         'btn',
         className,
         { active },
+        { invert },
     )
 
     return (
@@ -31,6 +32,7 @@ Button.propTypes = {
     className: PropTypes.string,
     disabled: PropTypes.bool,
     active: PropTypes.bool,
+    invert: PropTypes.bool,
 }
 
 Button.defaultProps = {
@@ -39,6 +41,7 @@ Button.defaultProps = {
     className: '',
     disabled: false,
     active: false,
+    invert: false,
 }
 
 export default Button;
