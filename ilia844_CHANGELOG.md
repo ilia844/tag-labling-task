@@ -1,6 +1,10 @@
 #Changelog
 <https://github.com/ilia844>
 
+## 2021-01-28
+- Create component Button (20m)
+- Create component Modal (3h)
+
 ## 2021-01-27
 - Add markers attachment to an image with state (5h) 
 
