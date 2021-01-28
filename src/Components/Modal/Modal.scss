@@ -1,0 +1,121 @@
+%tplunderline {
+  position: absolute;
+  content: '';
+  width: 95%;
+  height: 1px;
+  margin: 0 auto;
+
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background-color: black;
+}
+
+%modalContainer {
+  padding: 5px 10px;
+}
+
+.modal-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+
+  background-color: rgba(0, 0, 0, 0.5);
+
+  .modal-window {
+    width: 600px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    border-radius: 10px;
+    box-shadow: 0 0 10px black;
+    background-color: white;
+  }
+
+  .modal-header {
+    position: relative;
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @extend %modalContainer;
+
+    &::after {
+      @extend %tplunderline;
+    }
+  }
+
+  .modal-body {
+    position: relative;
+    width: 100%;
+    flex-grow: 1;
+    @extend %modalContainer;
+
+    .modal-textarea {
+      width: 100%;
+      height: 100%;
+
+      resize: none;
+    }
+
+    &::after {
+      @extend %tplunderline;
+    }
+  }
+
+  .modal-footer {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    @extend %modalContainer;
+
+    .modal-btn {
+      width: 70px;
+      height: 30px;
+      margin: 5px;
+
+      border-radius: 5px;
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+  .modal-overlay {
+    .modal-window {
+      width: 350px;
+      height: 250px;
+    }
+  }
+}
+
+@media (max-width: 378px) {
+  .modal-overlay {
+    .modal-window {
+      width: 200px;
+      height: 150px;
+    }
+
+    .modal-footer {
+      justify-content: space-between;
+
+      .modal-btn {
+        height: 20px;
+      }
+    }
+  }
+}

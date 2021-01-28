@@ -2,6 +2,7 @@ import React from 'react';
 
 import './InteractiveImage.scss';
 import Marker from '../Marker/Marker';
+import Modal from '../Modal/Modal';
 
 class InteractiveImage extends React.Component {
     constructor(props) {
@@ -25,6 +26,8 @@ class InteractiveImage extends React.Component {
         return notes.map((note) => {
             const left = Math.round(this.imageRef.current.offsetWidth / note.point.x) - 15;
             const top = Math.round(this.imageRef.current.offsetHeight / note.point.y) - 30;
+            // const left = Math.round(this.imageRef.current.offsetWidth / note.point.x);
+            // const top = Math.round(this.imageRef.current.offsetHeight / note.point.y);
 
             return (
                 <Marker
@@ -47,6 +50,7 @@ class InteractiveImage extends React.Component {
                     alt="Porshe"
                 />
                 {this.renderTags(this.props.notesList)}
+                <Modal title="Enter your note below"></Modal>
             </div>
         );
     }
