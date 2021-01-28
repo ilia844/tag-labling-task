@@ -8,7 +8,7 @@
   margin: 5px;
 
   border-radius: 10px;
-  border: 3px dashed cadetblue;
+  //border: 3px dashed cadetblue;
 
   .interactive-image {
     width: 100%;
@@ -18,6 +18,8 @@
     //object-fit: contain;
 
     border-radius: 10px;
+    border: 1px solid white;
+    box-shadow: 0 0 10px black;
   }
 }
 

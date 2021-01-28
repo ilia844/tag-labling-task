@@ -6,6 +6,39 @@ import './Modal.scss';
 
 
 class Modal extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.textareaRef = React.createRef();
+    }
+
+    handleSubmit = () => {
+        const noteText = this.textareaRef.current.value.trim();
+        noteText
+            ? this.props.onSubmit(noteText)
+            : this.handleCancel();
+    }
+
+    handleCancel = () => {
+        this.props.onCancel();
+    }
+
+    handleKeyDown = (e) => {
+        if (!e.shiftKey && e.key === 'Enter') {
+            this.handleSubmit();
+        }
+
+        if (e.key === 'Escape') {
+            this.handleCancel();
+        }
+    }
+
+    componentDidUpdate() {
+        if (this.props.isOpen) {
+            this.textareaRef.current.focus();
+        }
+    }
+
     render() {
         return (
             <Fragment>
@@ -18,19 +51,19 @@ class Modal extends React.Component {
                                 </div>
 
                                 <div className="modal-body">
-                                    <textarea className="modal-textarea"></textarea>
+                                    <textarea
+                                        ref={this.textareaRef}
+                                        className="modal-textarea"
+                                        autoFocus={true}
+                                        onKeyDown={this.handleKeyDown}
+                                    />
                                 </div>
 
                                 <div className="modal-footer">
-                                    <Button
-                                        className="modal-btn"
-                                        invert
-                                    >
+                                    <Button className="modal-btn" invert onClick={this.handleCancel}>
                                         Cansel
                                     </Button>
-                                    <Button
-                                        className="modal-btn"
-                                    >
+                                    <Button className="modal-btn" onClick={this.handleSubmit}>
                                         Ok
                                     </Button>
                                 </div>

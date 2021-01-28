@@ -31,7 +31,7 @@ class App extends React.Component {
         })
     }
 
-    addNewTag = (relativeX, relativeY) => {
+    addNewTag = (noteText, relativeX, relativeY) => {
         const notes = this.state.notesList.slice();
         notes.map((note) => note.active = false);
 
@@ -40,7 +40,7 @@ class App extends React.Component {
                 x: relativeX,
                 y: relativeY,
             },
-            note: '',
+            note: noteText,
             active: true,
         }
         notes.push(newNote);

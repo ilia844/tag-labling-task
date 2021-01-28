@@ -1,7 +1,10 @@
 #Changelog
 <https://github.com/ilia844>
 
+## 2021-01-29
+
 ## 2021-01-28
+- Add the ability to enter note for each tag (2h)
 - Create component Button (20m)
 - Create component Modal (3h)
 

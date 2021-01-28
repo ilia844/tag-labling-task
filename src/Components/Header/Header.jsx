@@ -19,7 +19,7 @@ class Header extends React.Component {
                         <div className="header-menu">
                             <input type="search"/>
 
-                            <Button className="login-btn" onClick={()=>{console.log('Login')}}>
+                            <Button className="login-btn">
                                 Log In
                             </Button>
                         </div>

@@ -11,7 +11,11 @@ class InteractiveImage extends React.Component {
         this.state = {
             modal: {
                 isOpen: false,
-            }
+            },
+            marker: {
+                relativeX: null,
+                relativeY: null,
+            },
         }
     }
 
@@ -24,16 +28,19 @@ class InteractiveImage extends React.Component {
         const relativeX = imageWidth / left;
         const relativeY = imageHeight / top;
 
-        this.props.addNewTag(relativeX, relativeY);
         this.setState({
             modal: {
                 isOpen: true,
-            }
+            },
+            marker: {
+                relativeX,
+                relativeY,
+            },
         })
     }
 
     renderTags = (notes) => {
-        return notes.map((note) => {
+        return notes.map((note, index) => {
             const left = Math.round(this.imageRef.current.offsetWidth / note.point.x) - 15;
             const top = Math.round(this.imageRef.current.offsetHeight / note.point.y) - 30;
             // const left = Math.round(this.imageRef.current.offsetWidth / note.point.x);
@@ -41,12 +48,34 @@ class InteractiveImage extends React.Component {
 
             return (
                 <Marker
+                    key={index}
                     left={left}
                     top={top}
                     active={note.active}
                 />
             );
         });
+    }
+
+    onSubmit = (noteText) => {
+        this.props.addNewTag(noteText, this.state.marker.relativeX, this.state.marker.relativeY);
+        this.setState({
+            modal: {
+                isOpen: false,
+            },
+        })
+    }
+
+    onCancel = () => {
+        this.setState({
+            modal: {
+                isOpen: false,
+            },
+            marker: {
+                relativeX: null,
+                relativeY: null,
+            },
+        })
     }
 
     render() {
@@ -60,7 +89,12 @@ class InteractiveImage extends React.Component {
                     alt="Porshe"
                 />
                 {this.renderTags(this.props.notesList)}
-                <Modal title="Enter your note below" isOpen={this.state.modal.isOpen}></Modal>
+                <Modal
+                    title="Enter your note below"
+                    isOpen={this.state.modal.isOpen}
+                    onSubmit={this.onSubmit}
+                    onCancel={this.onCancel}
+                />
             </div>
         );
     }
