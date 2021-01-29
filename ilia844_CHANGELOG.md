@@ -2,6 +2,7 @@
 <https://github.com/ilia844>
 
 ## 2021-01-29
+- Add a unique id for notes (30m)
 
 ## 2021-01-28
 - Add the ability to enter note for each tag (2h)

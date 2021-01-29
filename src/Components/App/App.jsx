@@ -85,7 +85,10 @@ class App extends React.Component {
                     <div className="wrapper">
                         <div className="work-area">
 
-                            <LeftMenu />
+                            <LeftMenu
+                                notesList={this.state.notesList}
+                                selectTag={this.selectTag}
+                            />
 
                             <InteractiveImage
                                 image={this.state.image ? this.state.image.preview : porsheImg}
