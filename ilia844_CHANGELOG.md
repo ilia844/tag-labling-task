@@ -2,6 +2,8 @@
 <https://github.com/ilia844>
 
 ## 2021-01-29
+- Add highlight tag when note selected or marker clicked (1h)
+- Create component Note (1h)
 - Add a unique id for notes (30m)
 
 ## 2021-01-28
