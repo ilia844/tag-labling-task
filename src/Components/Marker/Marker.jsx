@@ -23,6 +23,7 @@ class Marker extends React.Component {
                 style={{ left: this.props.left, top: this.props.top }}
                 src={marker}
                 alt="Marker"
+                onClick={this.props.selectTag}
             />
         );
     }

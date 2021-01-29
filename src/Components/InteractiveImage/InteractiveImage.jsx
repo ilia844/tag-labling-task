@@ -7,6 +7,7 @@ import Modal from '../Modal/Modal';
 class InteractiveImage extends React.Component {
     constructor(props) {
         super(props);
+
         this.imageRef = React.createRef();
         this.state = {
             modal: {
@@ -48,22 +49,27 @@ class InteractiveImage extends React.Component {
 
             return (
                 <Marker
-                    key={index}
+                    key={note.id}
                     left={left}
                     top={top}
                     active={note.active}
+                    selectTag={ () => this.props.selectTag(note.id) }
                 />
             );
         });
     }
 
     onSubmit = (noteText) => {
-        this.props.addNewTag(noteText, this.state.marker.relativeX, this.state.marker.relativeY);
-        this.setState({
-            modal: {
-                isOpen: false,
-            },
-        })
+        if (this.props.notesList.every((note) => note.note !== noteText)) {
+            this.props.addNewTag(noteText, this.state.marker.relativeX, this.state.marker.relativeY);
+            this.setState({
+                modal: {
+                    isOpen: false,
+                },
+            })
+        } else {
+            this.onCancel();
+        }
     }
 
     onCancel = () => {

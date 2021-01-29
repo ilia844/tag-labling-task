@@ -36,6 +36,7 @@ class App extends React.Component {
         notes.map((note) => note.active = false);
 
         const newNote = {
+            id: this.getHashCode(noteText),
             point: {
                 x: relativeX,
                 y: relativeY,
@@ -48,6 +49,28 @@ class App extends React.Component {
         this.setState({
            notesList: notes,
         });
+    }
+
+    selectTag = (id) => {
+        const notes = this.state.notesList.slice();
+        notes.map((note) => note.active = false);
+        notes.map((note) => note.active = (note.id === id))
+
+        this.setState({
+            notesList: notes,
+        });
+    }
+
+    getHashCode = (noteText) => {
+        let hash = 0;
+        let chr;
+        // if (noteText.length === 0) return hash;
+        for (let i = 0; i < noteText.length; i++) {
+            chr = noteText.charCodeAt(i);
+            hash = ((hash << 5) - hash) + chr;
+            hash |= 0;
+        }
+        return hash;
     }
 
     render() {
@@ -69,6 +92,7 @@ class App extends React.Component {
                                 notesList={this.state.notesList}
                                 setResizeFlag={this.setResizeFlag}
                                 addNewTag={this.addNewTag}
+                                selectTag={this.selectTag}
                             />
 
                         </div>
