@@ -3,6 +3,7 @@ import React from 'react';
 import './LeftMenu.scss';
 import Note from '../Note/Note';
 
+
 class LeftMenu extends React.Component {
     renderNotes = (notes) => {
         return notes.map((note) => (
@@ -19,7 +20,7 @@ class LeftMenu extends React.Component {
         return (
             <div className="left-menu">
                 <div className="left-menu-header">Left menu header</div>
-                <ul className="notes-list kletka">
+                <ul className="notes-list">
                     {this.renderNotes(this.props.notesList)}
                 </ul>
             </div>

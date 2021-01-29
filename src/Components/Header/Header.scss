@@ -16,16 +16,14 @@
     justify-content: space-between;
     align-items: center;
 
-    //border: 3px dotted black;
-
     .header-menu {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
 
-      border-radius: 10px;
-      border: 3px dashed cadetblue;
+      //border-radius: 10px;
+      //border: 3px dashed cadetblue;
 
       input {
         margin: 0 5px;
