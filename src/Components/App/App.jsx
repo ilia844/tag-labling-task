@@ -11,6 +11,7 @@ import InteractiveImage from '../InteractiveImage/InteractiveImage';
 class App extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             image: null,
             notesList: [],
@@ -27,13 +28,13 @@ class App extends React.Component {
 
     setResizeFlag = (isResized = true) => {
         this.setState({
-            isResized
+            isResized,
         })
     }
 
     addNewTag = (noteText, relativeX, relativeY) => {
         const notes = this.state.notesList.slice();
-        notes.map((note) => note.active = false);
+        notes.map((note) => note.isActive = false);
 
         const newNote = {
             id: this.getHashCode(noteText),
@@ -41,8 +42,8 @@ class App extends React.Component {
                 x: relativeX,
                 y: relativeY,
             },
-            note: noteText,
-            active: true,
+            noteText: noteText,
+            isActive: true,
         }
         notes.push(newNote);
 
@@ -53,8 +54,8 @@ class App extends React.Component {
 
     selectTag = (id) => {
         const notes = this.state.notesList.slice();
-        notes.map((note) => note.active = false);
-        notes.map((note) => note.active = (note.id === id))
+        notes.map((note) => note.isActive = false);
+        notes.map((note) => note.isActive = (note.id === id))
 
         this.setState({
             notesList: notes,
@@ -63,19 +64,18 @@ class App extends React.Component {
 
     getHashCode = (noteText) => {
         let hash = 0;
-        let chr;
-        // if (noteText.length === 0) return hash;
         for (let i = 0; i < noteText.length; i++) {
-            chr = noteText.charCodeAt(i);
+            const chr = noteText.charCodeAt(i);
             hash = ((hash << 5) - hash) + chr;
             hash |= 0;
         }
+
         return hash;
     }
 
     render() {
         return (
-            <div className='app-container'>
+            <div className="app-container">
 
                 <Header
                     loadNewImage={this.loadNewImage}

@@ -4,22 +4,23 @@ import classNames from 'classnames';
 import './Note.scss';
 
 
-class Note extends React.Component {
-    render() {
-        const classes = classNames(
-            'note-list-item',
-            {active : this.props.isActive}
-        )
+const Note = ({
+    onSelectTag, noteText, isActive
+}) => {
 
-        return (
-            <li
-                className={classes}
-                onClick={this.props.selectTag}
-            >
-                {this.props.note}
-            </li>
-        );
-    }
+    const classes = classNames(
+        'note-list-item',
+        {active : isActive}
+    );
+
+    return (
+        <li
+            className={classes}
+            onClick={onSelectTag}
+        >
+            {noteText}
+        </li>
+    );
 }
 
 export default Note;

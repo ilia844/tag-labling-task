@@ -13,7 +13,7 @@ const Button = ({
         className,
         { active },
         { invert },
-    )
+    );
 
     return (
         <button
@@ -23,7 +23,7 @@ const Button = ({
         >
             {children}
         </button>
-    )
+    );
 }
 
 Button.propTypes = {

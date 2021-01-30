@@ -8,7 +8,6 @@ class InteractiveImage extends React.Component {
     constructor(props) {
         super(props);
 
-        this.imageRef = React.createRef();
         this.state = {
             modal: {
                 isOpen: false,
@@ -17,7 +16,8 @@ class InteractiveImage extends React.Component {
                 relativeX: null,
                 relativeY: null,
             },
-        }
+        };
+        this.imageRef = React.createRef();
     }
 
     handleClick = (e) => {
@@ -52,7 +52,7 @@ class InteractiveImage extends React.Component {
                     key={note.id}
                     left={left}
                     top={top}
-                    active={note.active}
+                    isActive={note.isActive}
                     selectTag={ () => this.props.selectTag(note.id) }
                 />
             );
@@ -84,6 +84,18 @@ class InteractiveImage extends React.Component {
         })
     }
 
+    handleResize = () => {
+        this.props.setResizeFlag(true);
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', this.handleResize);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize);
+    }
+
     render() {
         return (
             <div className="image-area">
@@ -96,26 +108,13 @@ class InteractiveImage extends React.Component {
                 />
                 {this.renderTags(this.props.notesList)}
                 <Modal
-                    title="Enter your note below"
+                    title={'Enter your note below'}
                     isOpen={this.state.modal.isOpen}
                     onSubmit={this.onSubmit}
                     onCancel={this.onCancel}
                 />
             </div>
         );
-    }
-
-    componentDidMount() {
-        window.addEventListener('resize', this.handleResize);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.handleResize);
-    }
-
-
-    handleResize = () => {
-        this.props.setResizeFlag(true);
     }
 }
 

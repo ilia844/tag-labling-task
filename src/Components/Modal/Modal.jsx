@@ -39,6 +39,10 @@ class Modal extends React.Component {
         }
     }
 
+    handleClick = (e) => {
+        e.preventDefault();
+    }
+
     render() {
         return (
             <Fragment>
@@ -56,6 +60,7 @@ class Modal extends React.Component {
                                         className="modal-textarea"
                                         autoFocus={true}
                                         onKeyDown={this.handleKeyDown}
+                                        onClick={this.handleClick}
                                     />
                                 </div>
 

@@ -3,19 +3,19 @@ import {useDropzone} from 'react-dropzone';
 
 import './UploadArea.scss';
 
-function UploadArea(props) {
+function UploadArea({ loadNewImage }) {
     const onDrop = (acceptedFiles) => {
         const newImage = Object.assign(acceptedFiles[0], {
            preview: URL.createObjectURL(acceptedFiles[0]),
         });
 
-        props.loadNewImage(newImage);
+        loadNewImage(newImage);
     };
 
     const {getRootProps, getInputProps} = useDropzone({
+        onDrop,
         accept: 'image/*',
         maxFiles: 1,
-        onDrop: onDrop,
     });
 
     return (
@@ -24,9 +24,7 @@ function UploadArea(props) {
             <p>
                 Drop your file <br/>
                 or click to browse it
-
             </p>
-
         </div>
     );
 }

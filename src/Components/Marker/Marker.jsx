@@ -13,7 +13,7 @@ class Marker extends React.Component {
     }
 
     render() {
-        const marker = this.props.active ? markerActiveImg : markerImg;
+        const marker = this.props.isActive ? markerActiveImg : markerImg;
         // const left = this.props.left - this.markerRef.current.offsetWidth / 2;
 
         return (

@@ -9,9 +9,9 @@ class LeftMenu extends React.Component {
         return notes.map((note) => (
             <Note
                 key={note.id}
-                note={note.note}
-                isActive={note.active}
-                selectTag={ () => this.props.selectTag(note.id) }
+                noteText={note.noteText}
+                isActive={note.isActive}
+                onSelectTag={ () => this.props.selectTag(note.id) }
             />
         ));
     }
@@ -19,7 +19,7 @@ class LeftMenu extends React.Component {
     render() {
         return (
             <div className="left-menu">
-                <div className="left-menu-header">Left menu header</div>
+                <div className="left-menu-header">Your notes</div>
                 <ul className="notes-list">
                     {this.renderNotes(this.props.notesList)}
                 </ul>

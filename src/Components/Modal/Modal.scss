@@ -1,4 +1,4 @@
-%tplunderline {
+%tplUnderline {
   position: absolute;
   content: '';
   width: 95%;
@@ -53,7 +53,7 @@
     @extend %modalContainer;
 
     &::after {
-      @extend %tplunderline;
+      @extend %tplUnderline;
     }
   }
 
@@ -73,7 +73,7 @@
     }
 
     &::after {
-      @extend %tplunderline;
+      @extend %tplUnderline;
     }
   }
 
