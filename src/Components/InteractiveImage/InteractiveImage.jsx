@@ -4,6 +4,7 @@ import './InteractiveImage.scss';
 import Marker from '../Marker/Marker';
 import Modal from '../Modal/Modal';
 
+
 class InteractiveImage extends React.Component {
     constructor(props) {
         super(props);

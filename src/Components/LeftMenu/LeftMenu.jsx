@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch } from 'antd';
 
 import './LeftMenu.scss';
 import Note from '../Note/Note';
@@ -19,7 +20,17 @@ class LeftMenu extends React.Component {
     render() {
         return (
             <div className="left-menu">
-                <div className="left-menu-header">Your notes</div>
+                <div className="left-menu-header">
+
+                    <Switch
+                        className="toggle"
+                        checkedChildren="All"
+                        unCheckedChildren="Latest"
+                        defaultChecked
+                    />
+
+                </div>
+
                 <ul className="notes-list">
                     {this.renderNotes(this.props.notesList)}
                 </ul>
