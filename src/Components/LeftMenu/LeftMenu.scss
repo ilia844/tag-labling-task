@@ -25,6 +25,17 @@
     background-color: cadetblue;
     border-radius: 10px;
     box-shadow: 0 5px 5px black;
+
+    .toolbar {
+      width: 100px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      &-item {
+        margin: 0 5px;
+      }
+    }
   }
 
   .notes-list {
@@ -54,11 +65,4 @@
     height: auto;
     margin-right: 0;
   }
-}
-
-.toggle {
-  box-sizing: content-box;
-  display: flex;
-  align-items: center;
-  //border: 1px solid black;
 }

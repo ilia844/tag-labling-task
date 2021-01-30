@@ -1,5 +1,6 @@
 import React from 'react';
-import { Switch } from 'antd';
+import { Switch, Button } from 'antd';
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
 import './LeftMenu.scss';
 import Note from '../Note/Note';
@@ -28,6 +29,20 @@ class LeftMenu extends React.Component {
                         unCheckedChildren="Latest"
                         defaultChecked
                     />
+
+                    <div className="toolbar">
+                        <Button
+                            className={'toolbar-item'}
+                            shape="circle"
+                            size={'small'}
+                            icon={<EditOutlined />}
+                        />
+                        <Button
+                            shape="circle"
+                            size={'small'}
+                            icon={<DeleteOutlined />}
+                        />
+                    </div>
 
                 </div>
 
