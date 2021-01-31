@@ -1,6 +1,12 @@
 #Changelog
 <https://github.com/ilia844>
 
+## 2021-01-31
+- Add the ability to edit and delete tags (2.5h)
+
+## 2021-01-30
+- Add toggle and edit/delete buttons for notes List (1h)
+
 ## 2021-01-29
 - Add highlight tag when note selected or marker clicked (1h)
 - Create component Note (1h)
