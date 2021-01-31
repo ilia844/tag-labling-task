@@ -5,6 +5,7 @@ import porsheImg from '../../img/Porshe.jpeg';
 import Header from '../Header/Header';
 import LeftMenu from '../LeftMenu/LeftMenu';
 import InteractiveImage from '../InteractiveImage/InteractiveImage';
+import Modal from '../Modal/Modal';
 
 
 
@@ -16,6 +17,11 @@ class App extends React.Component {
             image: null,
             notesList: [],
             isResized: false,
+            modal: {
+                tagId: null,
+                noteText: '',
+                isOpen: false,
+            },
         }
     }
 
@@ -62,6 +68,40 @@ class App extends React.Component {
         });
     }
 
+    deleteTag = () => {
+        const notes = this.state.notesList.slice();
+
+        if (notes.length > 0) {
+            const noteIndex = notes.findIndex((note) => note.isActive);
+
+            if (noteIndex >= 0) {
+                notes.splice(noteIndex, 1);
+
+                this.setState({
+                    notesList: notes,
+                })
+            }
+        }
+    }
+
+    editTag = () => {
+        const notes = this.state.notesList.slice();
+
+        if (notes.length > 0) {
+            const note = notes.find((note) => note.isActive);
+
+            if (note) {
+                this.setState({
+                    modal: {
+                        tagId: note.id,
+                        noteText: note.noteText,
+                        isOpen: true,
+                    },
+                })
+            }
+        }
+    }
+
     getHashCode = (noteText) => {
         let hash = 0;
         for (let i = 0; i < noteText.length; i++) {
@@ -71,6 +111,40 @@ class App extends React.Component {
         }
 
         return hash;
+    }
+
+    onSubmitEditing = (newNoteText) => {
+        const notes = this.state.notesList;
+
+        if ((newNoteText !== '') && (notes.every((note) => note.noteText !== newNoteText)))
+        {
+            const editingNoteIndex = notes.findIndex((note) => note.id === this.state.modal.tagId);
+            const editingNote = notes[editingNoteIndex];
+
+            editingNote.noteText = newNoteText;
+            notes.splice(editingNoteIndex, 1, editingNote);
+
+            this.setState({
+                notesList: notes,
+                modal: {
+                    tagId: null,
+                    noteText: '',
+                    isOpen: false,
+                },
+            });
+        } else {
+            this.onCancelEditing();
+        }
+    }
+
+    onCancelEditing = () => {
+        this.setState({
+            modal: {
+                tagId: null,
+                noteText: '',
+                isOpen: false,
+            },
+        })
     }
 
     render() {
@@ -88,6 +162,8 @@ class App extends React.Component {
                             <LeftMenu
                                 notesList={this.state.notesList}
                                 selectTag={this.selectTag}
+                                deleteTag={this.deleteTag}
+                                editTag={this.editTag}
                             />
 
                             <InteractiveImage
@@ -96,6 +172,14 @@ class App extends React.Component {
                                 setResizeFlag={this.setResizeFlag}
                                 addNewTag={this.addNewTag}
                                 selectTag={this.selectTag}
+                            />
+
+                            <Modal
+                                title={'Enter your note below'}
+                                isOpen={this.state.modal.isOpen}
+                                onSubmit={this.onSubmitEditing}
+                                onCancel={this.onCancelEditing}
+                                defaultNote={this.state.modal.noteText}
                             />
 
                         </div>

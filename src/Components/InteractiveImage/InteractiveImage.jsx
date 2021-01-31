@@ -61,7 +61,7 @@ class InteractiveImage extends React.Component {
     }
 
     onSubmit = (noteText) => {
-        if (this.props.notesList.every((note) => note.note !== noteText)) {
+        if (this.props.notesList.every((note) => note.noteText !== noteText)) {
             this.props.addNewTag(noteText, this.state.marker.relativeX, this.state.marker.relativeY);
             this.setState({
                 modal: {
@@ -113,6 +113,7 @@ class InteractiveImage extends React.Component {
                     isOpen={this.state.modal.isOpen}
                     onSubmit={this.onSubmit}
                     onCancel={this.onCancel}
+                    defaultNote={''}
                 />
             </div>
         );

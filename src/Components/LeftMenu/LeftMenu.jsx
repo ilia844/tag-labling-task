@@ -36,11 +36,14 @@ class LeftMenu extends React.Component {
                             shape="circle"
                             size={'small'}
                             icon={<EditOutlined />}
+                            onClick={this.props.editTag}
                         />
                         <Button
+                            className={'toolbar-item'}
                             shape="circle"
                             size={'small'}
                             icon={<DeleteOutlined />}
+                            onClick={this.props.deleteTag}
                         />
                     </div>
 

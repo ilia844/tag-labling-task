@@ -36,11 +36,8 @@ class Modal extends React.Component {
     componentDidUpdate() {
         if (this.props.isOpen) {
             this.textareaRef.current.focus();
+            this.textareaRef.current.selectionStart = this.textareaRef.current.value.length;
         }
-    }
-
-    handleClick = (e) => {
-        e.preventDefault();
     }
 
     render() {
@@ -50,6 +47,7 @@ class Modal extends React.Component {
                     <Portal>
                         <div className="modal-overlay">
                             <div className="modal-window">
+
                                 <div className="modal-header">
                                     <div className="modal-title">{this.props.title}</div>
                                 </div>
@@ -60,18 +58,26 @@ class Modal extends React.Component {
                                         className="modal-textarea"
                                         autoFocus={true}
                                         onKeyDown={this.handleKeyDown}
-                                        onClick={this.handleClick}
+                                        defaultValue={this.props.defaultNote}
                                     />
                                 </div>
 
                                 <div className="modal-footer">
-                                    <Button className="modal-btn" invert onClick={this.handleCancel}>
-                                        Cansel
+                                    <Button
+                                        className="modal-btn"
+                                        onClick={this.handleCancel}
+                                        invert
+                                    >
+                                        Cancel
                                     </Button>
-                                    <Button className="modal-btn" onClick={this.handleSubmit}>
+                                    <Button
+                                        className="modal-btn"
+                                        onClick={this.handleSubmit}
+                                    >
                                         Ok
                                     </Button>
                                 </div>
+
                             </div>
 
                         </div>
