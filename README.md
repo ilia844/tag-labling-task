@@ -13,3 +13,4 @@
 
 - ### Additional functionality
     - Edit/Delete a note for selected tag
+    - Storing work progress (image and notes)
