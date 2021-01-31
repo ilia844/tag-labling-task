@@ -2,6 +2,7 @@
 <https://github.com/ilia844>
 
 ## 2021-01-31
+- Add storing work progress in localStorage (3h)
 - Add the ability to edit and delete tags (2.5h)
 
 ## 2021-01-30

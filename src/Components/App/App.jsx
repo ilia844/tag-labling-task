@@ -7,12 +7,16 @@ import LeftMenu from '../LeftMenu/LeftMenu';
 import InteractiveImage from '../InteractiveImage/InteractiveImage';
 import Modal from '../Modal/Modal';
 
+import uploadImage from '../../utils/uploadImage';
+import { saveNotesToStorage, loadImageFromStorage, loadNotesFromStorage } from '../../utils/localStorageWorker';
+
 
 
 class App extends React.Component {
     constructor(props) {
         super(props);
 
+        this.getProgressFromStorage();
         this.state = {
             image: null,
             notesList: [],
@@ -25,9 +29,19 @@ class App extends React.Component {
         }
     }
 
-    loadNewImage = (img) => {
+    getProgressFromStorage = async () => {
+        const image = await loadImageFromStorage();
+        const notesList = await loadNotesFromStorage();
+
         this.setState({
-            image: img,
+            image,
+            notesList,
+        });
+    }
+
+    loadNewImage = async (image) => {
+        this.setState({
+            image: await uploadImage(image),
             notesList: [],
         })
     }
@@ -52,6 +66,7 @@ class App extends React.Component {
             isActive: true,
         }
         notes.push(newNote);
+        saveNotesToStorage(notes);
 
         this.setState({
            notesList: notes,
@@ -76,6 +91,7 @@ class App extends React.Component {
 
             if (noteIndex >= 0) {
                 notes.splice(noteIndex, 1);
+                saveNotesToStorage(notes);
 
                 this.setState({
                     notesList: notes,
@@ -123,6 +139,7 @@ class App extends React.Component {
 
             editingNote.noteText = newNoteText;
             notes.splice(editingNoteIndex, 1, editingNote);
+            saveNotesToStorage(notes);
 
             this.setState({
                 notesList: notes,
@@ -167,7 +184,7 @@ class App extends React.Component {
                             />
 
                             <InteractiveImage
-                                image={this.state.image ? this.state.image.preview : porsheImg}
+                                image={this.state.image ? this.state.image : porsheImg}
                                 notesList={this.state.notesList}
                                 setResizeFlag={this.setResizeFlag}
                                 addNewTag={this.addNewTag}
