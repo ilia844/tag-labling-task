@@ -1,0 +1,23 @@
+.upload-area {
+  width: 150px;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+
+  border-radius: 10px;
+  border: 3px dashed cadetblue;
+
+  &:active {
+    outline: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 3px black inset;
+    transition: all 0.3s ease;
+  }
+}

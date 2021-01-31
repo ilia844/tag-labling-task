@@ -1,0 +1,31 @@
+.image-area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  margin: 5px;
+
+  .interactive-image {
+    width: 100%;
+    height: auto;
+    max-width: calc(100vw - 350px);
+    max-height: calc(100vh - 150px);
+    //object-fit: contain;
+
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: 0 0 10px black;
+  }
+}
+
+@media (max-width: 768px) {
+  .image-area {
+    flex-grow: 0;
+
+    .interactive-image{
+      max-width: none;
+      max-height: 70vh;
+    }
+  }
+}

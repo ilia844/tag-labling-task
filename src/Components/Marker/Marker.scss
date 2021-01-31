@@ -1,0 +1,11 @@
+.tag-label {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: all 0.3s ease;
+  }
+}
